@@ -1,0 +1,22 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: subscription-cleaner
+rules:
+- apiGroups: ["apps.open-cluster-management.io"] # "" indicates the core API group
+  resources: ["subscriptions"]
+  verbs: ["get", "watch", "list", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: subscription-cleaner
+subjects:
+- kind: ServiceAccount
+  name: subscription-cleaner
+  namespace: subscription-cleaner
+roleRef:
+  kind: ClusterRole
+  name: subscription-cleaner
+  apiGroup: rbac.authorization.k8s.io

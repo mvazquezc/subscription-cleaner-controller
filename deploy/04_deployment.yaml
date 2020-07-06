@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: subscription-cleaner
+  name: subscription-cleaner
+  namespace: subscription-cleaner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subscription-cleaner
+  template:
+    metadata:
+      labels:
+        app: subscription-cleaner
+    spec:
+      serviceAccountName: subscription-cleaner
+      containers:
+      - image: quay.io/mavazque/subscription-cleaner-controller:latest
+        name: subscription-cleaner-controller
