@@ -20,3 +20,12 @@ spec:
       containers:
       - image: quay.io/mavazque/subscription-cleaner-controller:latest
         name: subscription-cleaner-controller
+        command:
+        - /subscription-cleaner-controller
+        args:
+        - --namespace
+        # "" means all namespaces
+        - ""
+        - ttl
+        # TimeToLive for subscriptions, once reached, subscriptions will be deleted (in hours)
+        - "24"
