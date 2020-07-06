@@ -26,6 +26,6 @@ spec:
         - --namespace
         # "" means all namespaces
         - ""
-        - ttl
+        - --ttl
         # TimeToLive for subscriptions, once reached, subscriptions will be deleted (in hours)
         - "24"
